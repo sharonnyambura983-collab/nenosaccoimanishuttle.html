@@ -1,0 +1,2854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imani Shuttles | Neno SACCO</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7f6;
+    color:#18302f;
+    line-height:1.6;
+}
+a{text-decoration:none}
+button,input,select,textarea{font:inherit}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:white;
+    box-shadow:0 2px 12px rgba(0,0,0,.12);
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    color:#075e54;
+}
+
+.logo span{color:#f2b632}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:#173331;
+    font-weight:bold;
+}
+
+.nav-links a:hover{color:#075e54}
+
+.btn{
+    display:inline-block;
+    padding:12px 20px;
+    border:none;
+    border-radius:9px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn-primary{
+    background:#075e54;
+    color:white;
+}
+
+.btn-primary:hover{background:#064c44}
+
+.btn-gold{
+    background:#f2b632;
+    color:#172525;
+}
+
+.btn-white{
+    background:white;
+    color:#075e54;
+}
+
+.hero{
+    min-height:620px;
+    display:flex;
+    align-items:center;
+    color:white;
+    background:
+    linear-gradient(rgba(3,55,49,.88),rgba(3,55,49,.88)),
+    url("https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1600&q=80")
+    center/cover;
+}
+
+.hero-content{
+    width:1200px;
+    max-width:92%;
+    margin:auto;
+}
+
+.hero h1{
+    font-size:clamp(42px,7vw,72px);
+    line-height:1.05;
+    max-width:800px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:19px;
+    max-width:700px;
+    margin-bottom:25px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:70px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-size:35px;
+    color:#075e54;
+}
+
+.section-title p{
+    color:#647573;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.card-icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.card h3{margin-bottom:8px;color:#075e54}
+
+.booking-box{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.10);
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccd8d5;
+    border-radius:9px;
+    outline:none;
+    background:white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#075e54;
+}
+
+.full{grid-column:1/-1}
+
+.vehicle-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.vehicle{
+    background:white;
+    border:2px solid #d5dfdd;
+    padding:18px;
+    border-radius:12px;
+    cursor:pointer;
+    text-align:left;
+}
+
+.vehicle:hover{
+    border-color:#075e54;
+}
+
+.vehicle.selected{
+    background:#e5f5f1;
+    border-color:#075e54;
+}
+
+.vehicle strong{
+    display:block;
+    color:#075e54;
+    margin-bottom:4px;
+}
+
+.vehicle small{color:#657573}
+
+.summary{
+    background:#edf8f5;
+    border-left:4px solid #075e54;
+    padding:15px;
+    margin:20px 0;
+    border-radius:7px;
+}
+
+.steps{
+    display:flex;
+    gap:8px;
+    margin-bottom:30px;
+}
+
+.step-number{
+    flex:1;
+    text-align:center;
+    padding:10px;
+    background:#e5ecea;
+    border-radius:20px;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.step-number.active{
+    background:#075e54;
+    color:white;
+}
+
+.step{display:none}
+.step.active{display:block}
+
+.seats{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:8px;
+    margin:20px 0;
+}
+
+.seat{
+    border:1px solid #b8cbc7;
+    background:white;
+    padding:11px 5px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.seat:hover{border-color:#075e54}
+
+.seat.selected{
+    background:#075e54;
+    color:white;
+}
+
+.seat.booked{
+    background:#d8d8d8;
+    color:#777;
+    cursor:not-allowed;
+    text-decoration:line-through;
+}
+
+.routes{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.route-card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 7px 20px rgba(0,0,0,.07);
+}
+
+.route-card strong{color:#075e54}
+
+.notice{
+    padding:15px;
+    background:#fff7dc;
+    border:1px solid #e7cd73;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.success{
+    padding:15px;
+    background:#e8f7ed;
+    border-left:4px solid #198754;
+    border-radius:8px;
+    margin-top:15px;
+}
+
+.contact-section{
+    background:#102d2c;
+    color:white;
+    max-width:none;
+}
+
+.contact-inner{
+    max-width:1200px;
+    margin:auto;
+    padding:70px 20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.contact-inner h2{color:#f2b632}
+
+.contact-inner a{color:white}
+
+.contact-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+footer{
+    background:#071b1b;
+    color:#aac0bc;
+    text-align:center;
+    padding:25px;
+}
+
+.whatsapp-floating{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#25D366;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:29px;
+    z-index:999;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+}
+
+.modal.show{display:flex}
+
+.modal-content{
+    background:white;
+    width:min(850px,100%);
+    max-height:92vh;
+    overflow:auto;
+    padding:30px;
+    border-radius:18px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:15px;
+    top:10px;
+    border:none;
+    background:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.receipt{
+    border:2px dashed #9aafaa;
+    padding:25px;
+    border-radius:10px;
+}
+
+.receipt h2{
+    text-align:center;
+    color:#075e54;
+    margin-bottom:5px;
+}
+
+.receipt-center{text-align:center}
+
+.receipt-row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:9px 0;
+    border-bottom:1px solid #e0e7e5;
+}
+
+.action-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.hidden{display:none!important}
+
+@media(max-width:850px){
+    .nav-links{display:none}
+    .cards{grid-template-columns:1fr 1fr}
+    .vehicle-grid{grid-template-columns:1fr 1fr}
+    .routes{grid-template-columns:1fr 1fr}
+    .contact-inner{grid-template-columns:1fr}
+}
+
+@media(max-width:600px){
+    .form-grid{grid-template-columns:1fr}
+    .full{grid-column:auto}
+    .cards,.routes,.vehicle-grid{grid-template-columns:1fr}
+    .seats{grid-template-columns:repeat(4,1fr)}
+    .hero{min-height:550px}
+    .booking-box{padding:18px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="navbar">
+
+<a href="#home" class="logo">
+IMANI <span>SHUTTLES</span>
+</a>
+
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#book">Book</a></li>
+<li><a href="#routes">Routes</a></li>
+<li><a href="#parcel">Parcel</a></li>
+<li><a href="#track">Track</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<a href="#book" class="btn btn-primary">Book Now</a>
+
+</div>
+</header>
+
+
+<!-- HERO -->
+
+<section id="home" class="hero">
+
+<div class="hero-content">
+
+<p><strong>NENO SACCO • IMANI SHUTTLES</strong></p>
+
+<h1>
+Travel With Safety, Comfort & Style
+</h1>
+
+<p>
+Book your journey, choose your vehicle and seat,
+send parcels and keep your booking reference for easy tracking.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#book" class="btn btn-gold">
+🚐 Book a Seat
+</a>
+
+<a
+href="https://wa.me/254107792178?text=Hello%20Imani%20Shuttles%2C%20I%20would%20like%20to%20make%20an%20inquiry."
+target="_blank"
+class="btn btn-white">
+💬 WhatsApp Us
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section>
+
+<div class="section-title">
+
+<h2>Why Travel With Imani?</h2>
+
+<p>
+A simple and convenient transport booking experience.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-icon">🛡️</div>
+<h3>Safe Travel</h3>
+<p>
+Plan your journey and keep your booking reference.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">💺</div>
+<h3>Choose Your Seat</h3>
+<p>
+Choose from different shuttle and bus options.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">📦</div>
+<h3>Parcel Service</h3>
+<p>
+Send parcel inquiries directly to the shuttle team.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">📱</div>
+<h3>WhatsApp Support</h3>
+<p>
+Contact Imani Shuttles directly for assistance.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BOOKING -->
+
+<section id="book">
+
+<div class="section-title">
+
+<h2>Book Your Journey</h2>
+
+<p>
+Choose your vehicle, route, date and seat.
+</p>
+
+</div>
+
+
+<div class="booking-box">
+
+<div class="steps">
+
+<div id="dot1" class="step-number active">
+1. Journey
+</div>
+
+<div id="dot2" class="step-number">
+2. Seats
+</div>
+
+<div id="dot3" class="step-number">
+3. Payment
+</div>
+
+<div id="dot4" class="step-number">
+4. Receipt
+</div>
+
+</div>
+
+
+<!-- STEP 1 -->
+
+<div id="step1" class="step active">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Departure</label>
+
+<select id="departure">
+<option value="">Select Departure</option>
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Destination</label>
+
+<select id="destination">
+
+<option value="">
+Select departure first
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Travel Date</label>
+
+<input
+type="date"
+id="travelDate"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Departure Time</label>
+
+<select id="travelTime">
+
+<option>06:00 AM</option>
+<option>08:00 AM</option>
+<option>10:00 AM</option>
+<option>12:00 PM</option>
+<option>02:00 PM</option>
+<option>04:00 PM</option>
+<option>06:00 PM</option>
+<option>08:00 PM</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>Select Vehicle</label>
+
+<div id="vehicleGrid" class="vehicle-grid">
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Passenger Name</label>
+
+<input
+type="text"
+id="passengerName"
+placeholder="Full name"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Phone Number</label>
+
+<input
+type="tel"
+id="passengerPhone"
+placeholder="07XXXXXXXX"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Email</label>
+
+<input
+type="email"
+id="passengerEmail"
+placeholder="Email address"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Number of Passengers</label>
+
+<input
+type="number"
+id="passengerCount"
+min=""
+value=""
+>
+
+</div>
+
+</div>
+
+
+<div id="journeySummary" class="summary hidden"></div>
+
+
+<button
+id="toSeats"
+class="btn btn-primary">
+Continue to Seat Selection →
+</button>
+
+</div>
+
+
+<!-- STEP 2 -->
+
+<div id="step2" class="step">
+
+<h3>Select Your Seat(s)</h3>
+
+<p>
+Choose the seat number according to the vehicle .
+</p>
+
+<div id="seatInfo" class="summary"></div>
+
+<div id="seatContainer" class="seats"></div>
+
+<div class="summary">
+
+<strong>Selected Seats:</strong>
+
+<span id="selectedSeatsText">
+None
+</span>
+
+</div>
+
+<div class="action-buttons">
+
+<button id="back1" class="btn btn-white">
+← Back
+</button>
+
+<button id="toPayment" class="btn btn-primary">
+Continue to Payment →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- STEP 3 -->
+
+<div id="step3" class="step">
+
+<h3>Confirm & Pay</h3>
+
+<div id="confirmBox" class="summary"></div>
+
+
+<div class="notice">
+
+<strong>Go to whatsapp</strong>
+
+<br>
+
+Visit whatsapp for more inquiry:
+
+
+<br><br>
+
+Then enter your  transaction code.
+
+<br><br>
+
+
+</div>
+
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Amount</label>
+
+<input
+id="paymentAmount"
+readonly
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label> Transaction Code</label>
+
+<input
+id="transactionCode"
+placeholder="e.g. QF12ABCXYZ"
+>
+
+</div>
+
+</div>
+
+
+<p class="notice">
+
+Fares displayed on the website are
+<strong> are the actual fare of our vehicles </strong>
+
+</p>
+
+
+<div class="action-buttons">
+
+<button id="back2" class="btn btn-white">
+← Back
+</button>
+
+<button id="finishBooking" class="btn btn-gold">
+Confirm Booking & Generate Receipt
+</button>
+
+</div>
+
+</div>
+
+
+<!-- STEP 4 -->
+
+<div id="step4" class="step">
+
+<div id="receiptArea"></div>
+
+<div class="action-buttons">
+
+<button
+onclick="window.print()"
+class="btn btn-primary">
+🖨 Print Receipt
+</button>
+
+<button
+id="shareReceipt"
+class="btn btn-gold">
+💬 Share on WhatsApp
+</button>
+
+<button
+id="newBooking"
+class="btn btn-white">
+Make Another Booking
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ROUTES -->
+
+<section id="routes">
+
+<div class="section-title">
+
+<h2>Popular Routes</h2>
+
+<p>
+route fare.
+</p>
+
+</div>
+
+<div class="routes">
+
+<div class="route-card">
+<strong>Nairobi → Mombasa</strong>
+<br>
+fare: KSh 1,400
+</div>
+
+<div class="route-card">
+<strong>Nairobi → Nakuru</strong>
+<br>
+fare: KSh 700
+</div>
+
+<div class="route-card">
+<strong>Nairobi → Kisumu</strong>
+<br>
+fare: KSh 1,000
+</div>
+
+<div class="route-card">
+<strong>Nairobi → Meru</strong>
+<br>
+fare: KSh 1,000
+</div>
+
+<div class="route-card">
+<strong>Nairobi → Kitale</strong>
+<br>
+fare: KSh 1,200
+</div>
+
+<div class="route-card">
+<strong>Mombasa → Voi</strong>
+<br>
+fare: KSh 800
+</div>
+  <div class="route-card">
+<strong>Nairobi → Kilifi </strong>
+<br>
+fare: 1400
+</div>
+
+
+</div>
+
+<p style="text-align:center;margin-top:20px;color:#657573">
+
+
+</p>
+
+</section>
+
+
+<!-- PARCEL -->
+
+<section id="parcel">
+
+<div class="section-title">
+
+<h2>Parcel Delivery</h2>
+
+<p>
+Submit your parcel details for assistance.
+</p>
+
+</div>
+
+
+<div class="booking-box">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Sender Name</label>
+
+<input id="senderName">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Sender Phone</label>
+
+<input id="senderPhone">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Receiver Name</label>
+
+<input id="receiverName">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Receiver Phone</label>
+
+<input id="receiverPhone">
+
+</div>
+
+
+<div class="form-group">
+
+<label>From</label>
+
+<select id="parcelFrom"></select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>To</label>
+
+<select id="parcelTo"></select>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>Parcel Description</label>
+
+<textarea
+id="parcelDescription"
+placeholder="Describe your parcel">
+</textarea>
+
+</div>
+
+</div>
+
+
+<button
+id="parcelBtn"
+class="btn btn-primary">
+Submit Parcel Inquiry
+</button>
+
+<div id="parcelResult"></div>
+
+</div>
+
+</section>
+
+
+<!-- TRACK -->
+
+<section id="track">
+
+<div class="section-title">
+
+<h2>Track Booking</h2>
+
+<p>
+Enter your booking reference.
+</p>
+
+</div>
+
+
+<div class="booking-box">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Booking Reference</label>
+
+<input
+id="trackRef"
+placeholder="PARCEL-XXXXXX"
+>
+
+</div>
+
+<div style="display:flex;align-items:end">
+
+<button
+id="trackBtn"
+class="btn btn-primary">
+Track Booking
+</button>
+
+</div>
+
+</div>
+
+<div id="trackResult"></div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact-section">
+
+<div class="contact-inner">
+
+<div>
+
+<h2>Contact Imani Shuttles</h2>
+
+<br>
+
+<p>
+For bookings, route inquiries, parcels and assistance:
+</p>
+
+<br>
+
+<p>
+📞
+<a href="tel:+254107792178">
+0107792178
+</a>
+</p>
+
+<p>
+💬
+<a
+href="https://api.whatsapp.com/send?phone=254107792178."
+target="_blank">
+WhatsApp Us
+</a>
+</p>
+
+<p>
+✉
+<a href="mailto:infonenosacco@gmail.com">
+infonenosacco@gmail.com
+</a>
+</p>
+
+<p>
+📮 P.O. Box 60-100
+</p>
+
+</div>
+
+
+<div>
+
+<h2>Need Help?</h2>
+
+<br>
+
+<p>
+Talk directly to the Imani Shuttles team.
+</p>
+
+<div class="contact-buttons">
+
+<a
+href="tel:+254107792178"
+class="btn btn-gold">
+📞 Call Us
+</a>
+
+<a
+href="https://api.whatsapp.com/send?phone=254107792178&text=Hello%20Imani%20Shuttles%2C%20I%20would%20like%20to%20make%20an%20inquiry."
+target="_blank">
+💬 WhatsApp Us
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FLOATING WHATSAPP -->
+
+<a
+class="whatsapp-floating"
+href="https://api.whatsapp.com/send?phone=254107792178&text=Hello%20Imani%20Shuttles%2C%20I%20would%20like%20to%20make%20an%20inquiry."
+target="_blank">
+💬
+</a>
+
+
+<footer>
+
+© 2026 Imani Shuttles / Neno SACCO
+
+<br>
+
+Safety • Comfort • Style
+
+</footer>
+
+
+<script>
+
+/* ==============================
+   ROUTES & ESTIMATED FARES
+================================ */
+
+const routes = {
+
+"Nairobi":{
+"Thika":300,
+"Nakuru":700,
+"Naivasha":600,
+"Embu":900,
+"Meru":1000,
+"Maua":1000,
+"Kisumu":1000,
+"Kitale":1200,
+"Eldoret":1400,
+"Nyeri":800,
+"Nanyuki":1000,
+"Mwingi":1100,
+"Kitui":1200,
+"Machakos":500,
+"Wote":1200,
+"Kibwezi":1300,
+"Voi":1400,
+"Mombasa":1400,
+"Kilifi":1500,
+"Mtwapa":1500,
+"Ukunda":1600,
+"Malindi":1700,
+"Lungalunga":1800,
+"Kakamega":1400,
+"Bungoma":1500,
+"Busia":1600,
+"Kericho":1200,
+"Narok":1000,
+"Kisii":1400,
+"Garissa":1400
+},
+
+"Thika":{
+"Nairobi":300,
+"Muranga":400,
+"Nyeri":700,
+"Embu":700,
+"Meru":900,
+"Maua":1000,
+"Machakos":700,
+"Kitui":1000,
+"Naivasha":900,
+"Nakuru":1000
+},
+
+"Nakuru":{
+"Nairobi":700,
+"Naivasha":500,
+"Kisumu":800,
+"Kericho":700,
+"Kitale":1000,
+"Eldoret":900,
+"Kakamega":1100,
+"Bungoma":1200,
+"Nyeri":1200,
+"Nanyuki":1100,
+"Mombasa":2000,
+"Narok":1000
+},
+
+"Kisumu":{
+"Nairobi":1000,
+"Nakuru":800,
+"Kitale":800,
+"Eldoret":700,
+"Kakamega":500,
+"Bungoma":700,
+"Busia":700,
+"Kericho":600,
+"Kisii":600,
+"Homabay":500,
+"Siaya":500
+},
+
+"Kitale":{
+"Nairobi":1200,
+"Kisumu":800,
+"Nakuru":1000,
+"Eldoret":600,
+"Kakamega":700,
+"Bungoma":600,
+"Webuye":500,
+"Busia":800
+},
+
+"Eldoret":{
+"Nairobi":1400,
+"Nakuru":900,
+"Kitale":600,
+"Kisumu":700,
+"Kakamega":800,
+"Bungoma":800,
+"Busia":1000,
+"Kericho":700
+},
+
+"Embu":{
+"Nairobi":900,
+"Thika":700,
+"Meru":500,
+"Maua":700,
+"Isiolo":800,
+"Nyeri":700,
+"Nanyuki":900,
+"Kitui":900,
+"Mwingi":900
+},
+
+"Meru":{
+"Nairobi":1000,
+"Embu":500,
+"Thika":900,
+"Maua":400,
+"Isiolo":600,
+"Nanyuki":600,
+"Nyeri":800,
+"Kitui":1000
+},
+
+"Maua":{
+"Nairobi":1000,
+"Meru":400,
+"Embu":700,
+"Isiolo":800,
+"Thika":1000,
+"Nyeri":900
+},
+
+"Isiolo":{
+"Nairobi":1200,
+"Meru":600,
+"Maua":800,
+"Nanyuki":500,
+"Embu":800,
+"Nyeri":800
+},
+
+"Mombasa":{
+"Nairobi":1400,
+"Voi":800,
+"Manyani":800,
+"Kilifi":300,
+"Mtwapa":400,
+"Ukunda":600,
+"Malindi":800,
+"Lungalunga":900,
+"Kibwezi":1000,
+"Kitui":1600,
+"Machakos":1500,
+"Nakuru":2000,
+"Kisumu":2300
+},
+
+"Voi":{
+"Nairobi":1400,
+"Mombasa":800,
+"Manyani":400,
+"Kibwezi":600,
+"Malindi":1000,
+"Kilifi":900
+},
+
+"Kitui":{
+"Nairobi":1200,
+"Mwingi":500,
+"Wote":900,
+"Kibwezi":700,
+"Machakos":700,
+"Embu":900,
+"Meru":1000,
+"Mombasa":1600
+},
+
+"Mwingi":{
+"Nairobi":1100,
+"Kitui":500,
+"Embu":900,
+"Meru":1000,
+"Machakos":800
+},
+
+"Wote":{
+"Nairobi":1200,
+"Kitui":900,
+"Kibwezi":700,
+"Machakos":600,
+"Embu":1100,
+"Mombasa":1500
+},
+
+"Kibwezi":{
+"Nairobi":1300,
+"Wote":700,
+"Kitui":700,
+"Mombasa":1000,
+"Voi":600,
+"Machakos":900
+},
+
+"Kilifi":{
+"Nairobi":1500,
+"Mombasa":300,
+"Mtwapa":200,
+"Malindi":500,
+"Ukunda":600,
+"Lungalunga":700
+},
+
+"Mtwapa":{
+"Nairobi":1500,
+"Mombasa":400,
+"Kilifi":200,
+"Malindi":400,
+"Ukunda":500
+},
+
+"Ukunda":{
+"Nairobi":1600,
+"Mombasa":600,
+"Kilifi":600,
+"Mtwapa":500,
+"Lungalunga":500,
+"Malindi":900
+},
+
+"Malindi":{
+"Nairobi":1700,
+"Mombasa":800,
+"Kilifi":500,
+"Mtwapa":400,
+"Ukunda":900,
+"Lungalunga":1000
+},
+
+"Lungalunga":{
+"Nairobi":1800,
+"Mombasa":900,
+"Ukunda":500,
+"Malindi":1000,
+"Kilifi":700
+},
+
+"Nyeri":{
+"Nairobi":800,
+"Thika":700,
+"Embu":700,
+"Meru":800,
+"Nanyuki":600,
+"Nakuru":1200
+},
+
+"Nanyuki":{
+"Nairobi":1000,
+"Nyeri":600,
+"Meru":600,
+"Isiolo":500,
+"Embu":900,
+"Nakuru":1100
+},
+
+"Machakos":{
+"Nairobi":500,
+"Thika":700,
+"Kitui":700,
+"Wote":600,
+"Kibwezi":900,
+"Mombasa":1500
+},
+
+"Kakamega":{
+"Nairobi":1400,
+"Kisumu":500,
+"Kitale":700,
+"Eldoret":800,
+"Bungoma":500,
+"Busia":700,
+"Kericho":900
+},
+
+"Bungoma":{
+"Nairobi":1500,
+"Kakamega":500,
+"Kitale":600,
+"Kisumu":700,
+"Busia":700,
+"Eldoret":800
+},
+
+"Busia":{
+"Nairobi":1600,
+"Kisumu":700,
+"Kakamega":700,
+"Bungoma":700,
+"Kitale":800,
+"Eldoret":1000
+},
+
+"Kericho":{
+"Nairobi":1200,
+"Nakuru":700,
+"Kisumu":600,
+"Kakamega":900,
+"Eldoret":700
+},
+
+"Kisii":{
+"Nairobi":1400,
+"Kisumu":600,
+"Kericho":600,
+"Narok":900,
+"Homabay":500,
+"Awendo":600
+},
+
+"Narok":{
+"Nairobi":1000,
+"Nakuru":1000,
+"Kisii":900,
+"Naivasha":700,
+"Kericho":1000
+},
+
+"Naivasha":{
+"Nairobi":600,
+"Nakuru":500,
+"Narok":700,
+"Thika":900,
+"Kericho":1000
+}
+
+};
+
+
+/* ==============================
+   VEHICLES
+================================ */
+
+const vehicles = {
+
+"14-seater":{
+name:"14-Seater Shuttle",
+capacity:14,
+seats:[
+"1","2",
+"3","4",
+"5","6",
+"7","8",
+"9","10",
+"11","12",
+"13","14"
+]
+},
+
+"18-seater":{
+name:"18-Seater Shuttle",
+capacity:18,
+seats:[
+"1","2","3",
+"4","5","6",
+"7","8","9",
+"10","11","12",
+"13","14","15",
+"16","17","18"
+]
+},
+
+"vip-11":{
+name:"VIP Shuttle - 11 Passengers",
+capacity:11,
+seats:[
+"1","2",
+"3","4",
+"5","6",
+"7","8",
+"9","10",
+"11"
+]
+},
+
+"42-seater":{
+name:"42-Seater Bus",
+capacity:42,
+seats:[
+"1","2","3","4","5","6",
+"7","8","9","10","11","12",
+"13","14","15","16","17","18",
+"19","20","21","22","23","24",
+"25","26","27","28","29","30",
+"31","32","33","34","35","36",
+"37","38","39","40","41","42"
+]
+}
+
+};
+
+
+/* ==============================
+   APP STATE
+================================ */
+
+let state = {
+vehicle:null,
+seats:[],
+booking:null
+};
+
+
+/* ==============================
+   SHORTCUT
+================================ */
+
+const $ = id => document.getElementById(id);
+
+
+/* ==============================
+   ESCAPE HTML
+================================ */
+
+function escapeHTML(value){
+
+return String(value ?? "")
+.replace(/[&<>"']/g,function(char){
+
+return {
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[char];
+
+});
+
+}
+
+
+/* ==============================
+   DATE
+================================ */
+
+const today =
+new Date().toISOString().split("T")[0];
+
+$("travelDate").min=today;
+$("travelDate").value=today;
+
+
+/* ==============================
+   POPULATE LOCATIONS
+================================ */
+
+Object.keys(routes)
+.sort()
+.forEach(place=>{
+
+$("departure").insertAdjacentHTML(
+"beforeend",
+`<option value="${escapeHTML(place)}">
+${escapeHTML(place)}
+</option>`
+);
+
+$("parcelFrom").insertAdjacentHTML(
+"beforeend",
+`<option value="${escapeHTML(place)}">
+${escapeHTML(place)}
+</option>`
+);
+
+});
+
+
+const allPlaces =
+new Set(Object.keys(routes));
+
+Object.values(routes)
+.forEach(route=>{
+
+Object.keys(route)
+.forEach(place=>{
+
+allPlaces.add(place);
+
+});
+
+});
+
+
+[...allPlaces]
+.sort()
+.forEach(place=>{
+
+$("parcelTo").insertAdjacentHTML(
+"beforeend",
+`<option value="${escapeHTML(place)}">
+${escapeHTML(place)}
+</option>`
+);
+
+});
+
+
+/* ==============================
+   DESTINATIONS
+================================ */
+
+$("departure").addEventListener(
+"change",
+function(){
+
+const departure=this.value;
+
+$("destination").innerHTML=
+`<option value="">
+Select Destination
+</option>`;
+
+if(routes[departure]){
+
+Object.keys(routes[departure])
+.sort()
+.forEach(destination=>{
+
+$("destination").insertAdjacentHTML(
+"beforeend",
+`<option value="${escapeHTML(destination)}">
+${escapeHTML(destination)}
+</option>`
+);
+
+});
+
+}
+
+updateSummary();
+
+}
+);
+
+
+/* ==============================
+   VEHICLES
+================================ */
+
+function renderVehicles(){
+
+$("vehicleGrid").innerHTML="";
+
+Object.entries(vehicles)
+.forEach(([key,vehicle])=>{
+
+const button =
+document.createElement("button");
+
+button.type="button";
+
+button.className="vehicle";
+
+button.innerHTML=`
+
+🚐
+
+<strong>
+${vehicle.name}
+</strong>
+
+<small>
+Capacity: ${vehicle.capacity} passengers
+</small>
+
+`;
+
+button.onclick=function(){
+
+selectVehicle(key);
+
+};
+
+button.dataset.key=key;
+
+$("vehicleGrid").appendChild(button);
+
+});
+
+}
+
+
+function selectVehicle(key){
+
+state.vehicle=vehicles[key];
+
+state.seats=[];
+
+document
+.querySelectorAll(".vehicle")
+.forEach(button=>{
+
+button.classList.toggle(
+"selected",
+button.dataset.key===key
+);
+
+});
+
+let count=
+parseInt($("passengerCount").value||1);
+
+if(count>state.vehicle.capacity){
+
+count=state.vehicle.capacity;
+
+$("passengerCount").value=count;
+
+}
+
+updateSummary();
+
+}
+
+
+renderVehicles();
+
+
+/* ==============================
+   SUMMARY
+================================ */
+
+function updateSummary(){
+
+const departure=
+$("departure").value;
+
+const destination=
+$("destination").value;
+
+const date=
+$("travelDate").value;
+
+if(departure && destination){
+
+const fare=
+routes[departure]?.[destination];
+
+$("journeySummary")
+.classList.remove("hidden");
+
+$("journeySummary").innerHTML=`
+
+<strong>
+${escapeHTML(departure)}
+→
+${escapeHTML(destination)}
+</strong>
+
+<br>
+
+${escapeHTML(date)}
+•
+${escapeHTML($("travelTime").value)}
+
+<br>
+
+fare:
+<strong>
+KSh ${fare ?? "Contact"}
+</strong>
+
+<br>
+
+Vehicle:
+<strong>
+${state.vehicle
+?escapeHTML(state.vehicle.name)
+:"Not selected"}
+</strong>
+
+`;
+
+}else{
+
+$("journeySummary")
+.classList.add("hidden");
+
+}
+
+}
+
+
+$("destination")
+.addEventListener("change",updateSummary);
+
+$("travelDate")
+.addEventListener("change",updateSummary);
+
+$("travelTime")
+.addEventListener("change",updateSummary);
+
+
+$("passengerCount")
+.addEventListener("input",function(){
+
+let number=
+parseInt(this.value||1);
+
+if(number<1)number=1;
+
+if(state.vehicle &&
+number>state.vehicle.capacity){
+
+number=state.vehicle.capacity;
+
+}
+
+this.value=number;
+
+updateSummary();
+
+});
+
+
+/* ==============================
+   BOOKED SEATS
+================================ */
+
+function getBookedSeats(){
+
+const date=$("travelDate").value;
+
+const departure=$("departure").value;
+
+const destination=$("destination").value;
+
+const vehicle=
+state.vehicle?.name || "";
+
+const bookings=
+JSON.parse(
+localStorage.getItem("imaniBookings") || "[]"
+);
+
+return bookings
+.filter(booking=>
+booking.date===date &&
+booking.departure===departure &&
+booking.destination===destination &&
+booking.vehicle===vehicle
+)
+.flatMap(booking=>booking.seats||[]);
+
+}
+
+
+/* ==============================
+   RENDER SEATS
+================================ */
+
+function renderSeats(){
+
+const container=
+$("seatContainer");
+
+container.innerHTML="";
+
+const booked=
+new Set(getBookedSeats());
+
+state.vehicle.seats.forEach(
+(seat,index)=>{
+
+const button=
+document.createElement("button");
+
+button.type="button";
+
+button.className="seat";
+
+button.textContent=seat;
+
+if(booked.has(seat)){
+
+button.classList.add("booked");
+
+button.disabled=true;
+
+}
+
+if(state.seats.includes(seat)){
+
+button.classList.add("selected");
+
+}
+
+button.onclick=function(){
+
+toggleSeat(seat);
+
+};
+
+container.appendChild(button);
+
+});
+
+$("seatInfo").innerHTML=`
+
+<strong>
+${escapeHTML(state.vehicle.name)}
+</strong>
+
+•
+
+${state.vehicle.capacity}
+seats
+
+•
+
+${booked.size}
+already booked for this journey.
+
+`;
+
+$("selectedSeatsText").textContent=
+state.seats.length
+?state.seats.join(", ")
+:"None";
+
+}
+
+
+/* ==============================
+   SELECT SEAT
+================================ */
+
+function toggleSeat(seat){
+
+const required=
+parseInt($("passengerCount").value||1);
+
+if(state.seats.includes(seat)){
+
+state.seats=
+state.seats.filter(
+item=>item!==seat
+);
+
+}else{
+
+if(state.seats.length>=required){
+
+alert(
+`You selected ${required} passenger(s). Please select exactly ${required} seat(s).`
+);
+
+return;
+
+}
+
+state.seats.push(seat);
+
+}
+
+renderSeats();
+
+}
+
+
+/* ==============================
+   STEPS
+================================ */
+
+function showStep(number){
+
+document
+.querySelectorAll(".step")
+.forEach(step=>{
+step.classList.remove("active");
+});
+
+$("step"+number)
+.classList.add("active");
+
+
+for(let i=1;i<=4;i++){
+
+$("dot"+i)
+.classList.toggle(
+"active",
+i<=number
+);
+
+}
+
+window.scrollTo({
+
+top:$("book").offsetTop-70,
+
+behavior:"smooth"
+
+});
+
+}
+
+
+/* ==============================
+   STEP 1 → 2
+================================ */
+
+$("toSeats").onclick=function(){
+
+const departure=
+$("departure").value;
+
+const destination=
+$("destination").value;
+
+const date=
+$("travelDate").value;
+
+const name=
+$("passengerName").value.trim();
+
+const phone=
+$("passengerPhone").value.trim();
+
+if(
+!departure ||
+!destination ||
+!date ||
+!state.vehicle ||
+!name ||
+!phone
+){
+
+alert(
+"Please complete all required journey and passenger details."
+);
+
+return;
+
+}
+
+state.seats=[];
+
+renderSeats();
+
+showStep(2);
+
+};
+
+
+/* ==============================
+   BACK
+================================ */
+
+$("back1").onclick=function(){
+
+showStep(1);
+
+};
+
+
+/* ==============================
+   STEP 2 → 3
+================================ */
+
+$("toPayment").onclick=function(){
+
+const required=
+parseInt($("passengerCount").value||1);
+
+if(state.seats.length!==required){
+
+alert(
+`Please select exactly ${required} seat(s).`
+);
+
+return;
+
+}
+
+const departure=
+$("departure").value;
+
+const destination=
+$("destination").value;
+
+const fare=
+routes[departure]?.[destination]||0;
+
+const total=
+fare*required;
+
+
+$("paymentAmount").value=
+`KSh ${total.toLocaleString()}`;
+
+
+$("confirmBox").innerHTML=`
+
+<strong>
+${escapeHTML($("passengerName").value)}
+</strong>
+
+<br>
+
+Route:
+${escapeHTML(departure)}
+→
+${escapeHTML(destination)}
+
+<br>
+
+Date:
+${escapeHTML($("travelDate").value)}
+
+<br>
+
+Time:
+${escapeHTML($("travelTime").value)}
+
+<br>
+
+Vehicle:
+${escapeHTML(state.vehicle.name)}
+
+<br>
+
+Seats:
+${escapeHTML(state.seats.join(", "))}
+
+<br>
+
+Passengers:
+${required}
+
+<br>
+
+<strong>
+ Total:
+KSh ${total.toLocaleString()}
+</strong>
+
+`;
+
+showStep(3);
+
+};
+
+
+/* ==============================
+   BACK TO SEATS
+================================ */
+
+$("back2").onclick=function(){
+
+showStep(2);
+
+};
+
+
+/* ==============================
+   REFERENCE
+================================ */
+
+function createReference(prefix){
+
+return prefix+
+"-"+
+Math.random()
+.toString(36)
+.substring(2,8)
+.toUpperCase();
+
+}
+
+
+/* ==============================
+   FINISH BOOKING
+================================ */
+
+$("finishBooking").onclick=function(){
+
+const transaction=
+$("transactionCode").value.trim();
+
+if(!transaction){
+
+alert(
+"Please enter your transaction code."
+);
+
+return;
+
+}
+
+const departure=
+$("departure").value;
+
+const destination=
+$("destination").value;
+
+const date=
+$("travelDate").value;
+
+const passengers=
+parseInt(
+$("passengerCount").value||1
+);
+
+const fare=
+routes[departure]?.[destination]||0;
+
+const total=
+fare*passengers;
+
+
+const booking={
+
+reference:createReference("NENO"),
+
+name:$("passengerName").value.trim(),
+
+phone:$("passengerPhone").value.trim(),
+
+email:$("passengerEmail").value.trim(),
+
+departure:departure,
+
+destination:destination,
+
+date:date,
+
+time:$("travelTime").value,
+
+vehicle:state.vehicle.name,
+
+capacity:state.vehicle.capacity,
+
+seats:[...state.seats],
+
+passengers:passengers,
+
+fare:fare,
+
+total:total,
+
+transaction:transaction,
+
+status:
+"Payment submitted - awaiting confirmation",
+
+created:
+new Date().toISOString()
+
+};
+
+
+const bookings=
+JSON.parse(
+localStorage.getItem("imaniBookings")||"[]"
+);
+
+bookings.push(booking);
+
+localStorage.setItem(
+"imaniBookings",
+JSON.stringify(bookings)
+);
+
+state.booking=booking;
+
+$("receiptArea").innerHTML=
+createReceipt(booking);
+
+showStep(4);
+
+};
+
+
+/* ==============================
+   RECEIPT
+================================ */
+
+function createReceipt(booking){
+
+return `
+
+<div class="receipt">
+
+<h2>
+IMANI SHUTTLES
+</h2>
+
+<p class="receipt-center">
+Neno SACCO
+</p>
+
+<p class="receipt-center">
+<strong>BOOKING RECEIPT</strong>
+</p>
+
+<br>
+
+<div class="receipt-row">
+<span>Booking Reference</span>
+<strong>
+${escapeHTML(booking.reference)}
+</strong>
+</div>
+
+<div class="receipt-row">
+<span>Passenger</span>
+<strong>
+${escapeHTML(booking.name)}
+</strong>
+</div>
+
+<div class="receipt-row">
+<span>Phone</span>
+<strong>
+${escapeHTML(booking.phone)}
+</strong>
+</div>
+
+<div class="receipt-row">
+<span>Route</span>
+<strong>
+${escapeHTML(booking.departure)}
+→
+${escapeHTML(booking.destination)}
+</strong>
+</div>
+
+<div class="receipt-row">
+<span>Date</span>
+<strong>
+${escapeHTML(booking.date)}
+</strong>
+</div>
+
+<div class="receipt-row">
+<span>Time</span>
+<strong>
+${escapeHTML(booking.time)}
+</strong>
+</div>
+
+<div class="receipt-row">
+<span>Vehicle</span>
+<strong>
+${escapeHTML(booking.vehicle)}
+</strong>
+</div>
+
+<div class="receipt-row">
+<span>Seats</span>
+<strong>
+${escapeHTML(booking.seats.join(", "))}
+</strong>
+</div>
+
+<div class="receipt-row">
+<span>Passengers</span>
+<strong>
+${booking.passengers}
+</strong>
+</div>
+
+<div class="receipt-row">
+<span>Estimated Fare</span>
+<strong>
+KSh ${booking.total.toLocaleString()}
+</strong>
+</div>
+
+<div class="receipt-row">
+<span>Transaction Code</span>
+<strong>
+${escapeHTML(booking.transaction)}
+</strong>
+</div>
+
+<br>
+
+<div class="success">
+
+<strong>Status:</strong>
+
+${escapeHTML(booking.status)}
+
+</div>
+
+<br>
+
+<p>
+
+<strong>
+Keep your booking reference:
+${escapeHTML(booking.reference)}
+</strong>
+
+</p>
+
+<br>
+
+<small>
+
+For confirmation or changes, contact
+Imani Shuttles on
+0107792178.
+
+<br><br>
+
+This website is the only original website for Neno sacco/ imani shuttle
+
+</small>
+
+</div>
+
+`;
+
+}
+
+
+/* ==============================
+   SHARE RECEIPT
+================================ */
+
+$("shareReceipt").onclick=function(){
+
+const booking=state.booking;
+
+if(!booking)return;
+
+const message=
+
+`Hello Imani Shuttles.
+
+My booking reference is ${booking.reference}.
+
+Passenger: ${booking.name}
+
+Route: ${booking.departure} to ${booking.destination}
+
+Date: ${booking.date}
+
+Time: ${booking.time}
+
+Vehicle: ${booking.vehicle}
+
+Seats: ${booking.seats.join(", ")}
+
+ Amount: KSh ${booking.total}
+
+Please confirm my booking.`;
+
+window.location.href=
+"https://wa.me/254107792178?text="+
+encodeURIComponent(message);
+
+};
+
+
+/* ==============================
+   NEW BOOKING
+================================ */
+
+$("newBooking").onclick=function(){
+
+state={
+vehicle:null,
+seats:[],
+booking:null
+};
+
+$("passengerName").value="";
+$("passengerPhone").value="";
+$("passengerEmail").value="";
+$("transactionCode").value="";
+
+document
+.querySelectorAll(".vehicle")
+.forEach(button=>{
+button.classList.remove("selected");
+});
+
+showStep(1);
+
+};
+
+
+/* ==============================
+   TRACK BOOKING
+================================ */
+
+$("trackBtn").onclick=function(){
+
+const reference=
+$("trackRef")
+.value
+.trim()
+.toUpperCase();
+
+const bookings=
+JSON.parse(
+localStorage.getItem("imaniBookings")||"[]"
+);
+
+const booking=
+bookings.find(
+item=>item.reference===reference
+);
+
+
+if(!booking){
+
+$("trackResult").innerHTML=`
+
+<div class="notice">
+
+<strong>
+Booking not found.
+</strong>
+
+<br>
+
+Check your booking reference or contact
+Imani Shuttles on WhatsApp.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+$("trackResult").innerHTML=`
+
+<div class="success">
+
+<strong>
+${escapeHTML(booking.reference)}
+</strong>
+
+<br><br>
+
+Passenger:
+${escapeHTML(booking.name)}
+
+<br>
+
+Route:
+${escapeHTML(booking.departure)}
+→
+${escapeHTML(booking.destination)}
+
+<br>
+
+Date:
+${escapeHTML(booking.date)}
+
+<br>
+
+Time:
+${escapeHTML(booking.time)}
+
+<br>
+
+Vehicle:
+${escapeHTML(booking.vehicle)}
+
+<br>
+
+Seats:
+${escapeHTML(booking.seats.join(", "))}
+
+<br><br>
+
+<strong>
+${escapeHTML(booking.status)}
+</strong>
+
+</div>
+
+`;
+
+};
+
+
+/* ==============================
+   PARCEL
+================================ */
+
+$("parcelBtn").onclick=function(){
+
+const sender=
+$("senderName").value.trim();
+
+const senderPhone=
+$("senderPhone").value.trim();
+
+const receiver=
+$("receiverName").value.trim();
+
+const receiverPhone=
+$("receiverPhone").value.trim();
+
+const description=
+$("parcelDescription").value.trim();
+
+if(
+!sender ||
+!senderPhone ||
+!receiver ||
+!receiverPhone ||
+!description
+){
+
+alert(
+"Please complete all parcel details."
+);
+
+return;
+
+}
+
+
+const parcel={
+
+reference:createReference("PARCEL"),
+
+sender:sender,
+
+senderPhone:senderPhone,
+
+receiver:receiver,
+
+receiverPhone:receiverPhone,
+
+from:$("parcelFrom").value,
+
+to:$("parcelTo").value,
+
+description:description
+
+};
+
+
+const parcels=
+JSON.parse(
+localStorage.getItem("imaniParcels")||"[]"
+);
+
+parcels.push(parcel);
+
+localStorage.setItem(
+"imaniParcels",
+JSON.stringify(parcels)
+);
+
+
+$("parcelResult").innerHTML=`
+
+<div class="success">
+
+<strong>
+Parcel inquiry submitted.
+</strong>
+
+<br>
+
+Parcel Reference:
+<strong>
+${escapeHTML(parcel.reference)}
+</strong>
+
+<br><br>
+
+For confirmation, contact us on WhatsApp.
+
+<br><br>
+
+<a
+href="https://wa.me/254107792178?text=${encodeURIComponent(
+"Hello Imani Shuttles. My parcel inquiry reference is "+parcel.reference
+)}"
+target="_blank"
+class="btn btn-primary">
+
+💬 WhatsApp Imani Shuttles
+
+</a>
+
+</div>
+
+`;
+
+};
+
+
+/* ==============================
+   UPDATE SUMMARY WHEN DATE CHANGES
+================================ */
+
+$("travelDate").addEventListener(
+"change",
+function(){
+
+if(state.vehicle){
+
+state.seats=[];
+
+}
+
+updateSummary();
+
+}
+);
+
+</script>
+
+</body>
+</html>
